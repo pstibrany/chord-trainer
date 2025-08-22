@@ -49,6 +49,9 @@ class ChordTrainer {
         
         this.selectAllRootsBtn.addEventListener('click', () => this.selectAllRoots());
         this.selectNoneRootsBtn.addEventListener('click', () => this.selectNoneRoots());
+        
+        // Keyboard event listeners
+        document.addEventListener('keydown', (e) => this.handleKeyPress(e));
     }
     
     startQuiz() {
@@ -237,6 +240,41 @@ class ChordTrainer {
         document.querySelectorAll('.root-checkbox').forEach(checkbox => {
             checkbox.checked = false;
         });
+    }
+    
+    handleKeyPress(e) {
+        // Prevent space from scrolling the page
+        if (e.code === 'Space') {
+            e.preventDefault();
+        }
+        
+        // Start screen: Enter starts the quiz
+        if (this.startScreen.classList.contains('active')) {
+            if (e.code === 'Enter') {
+                this.startQuiz();
+            }
+        }
+        // Quiz screen
+        else if (this.quizScreen.classList.contains('active')) {
+            // Enter or Space reveals the answer
+            if (!this.revealBtn.classList.contains('hidden')) {
+                if (e.code === 'Enter' || e.code === 'Space') {
+                    this.revealAnswer();
+                }
+            }
+            // Space marks as correct when answer is revealed
+            else if (!this.correctBtn.classList.contains('hidden') && !this.correctBtn.disabled) {
+                if (e.code === 'Space') {
+                    this.markAnswer(true);
+                }
+            }
+        }
+        // Results screen: Enter restarts the quiz
+        else if (this.resultsScreen.classList.contains('active')) {
+            if (e.code === 'Enter') {
+                this.restartQuiz();
+            }
+        }
     }
 }
 
