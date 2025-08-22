@@ -105,7 +105,7 @@ const CHORD_TYPE_NAMES = {
     minMaj7: 'min(maj7)'
 };
 
-function getRandomChord(selectedTypes = null) {
+function getRandomChord(selectedTypes = null, selectedRoots = null) {
     // Use all chord types if none specified
     const availableTypes = selectedTypes || Object.keys(CHORD_DATA);
     
@@ -118,8 +118,21 @@ function getRandomChord(selectedTypes = null) {
     }
     
     const randomType = validTypes[Math.floor(Math.random() * validTypes.length)];
-    const roots = Object.keys(CHORD_DATA[randomType]);
-    const randomRoot = roots[Math.floor(Math.random() * roots.length)];
+    
+    // Get available roots for this chord type
+    let availableRoots = Object.keys(CHORD_DATA[randomType]);
+    
+    // Filter by selected roots if provided
+    if (selectedRoots && selectedRoots.length > 0) {
+        availableRoots = availableRoots.filter(root => selectedRoots.includes(root));
+        
+        // If no matching roots, use all roots for this chord type
+        if (availableRoots.length === 0) {
+            availableRoots = Object.keys(CHORD_DATA[randomType]);
+        }
+    }
+    
+    const randomRoot = availableRoots[Math.floor(Math.random() * availableRoots.length)];
     
     return {
         root: randomRoot,

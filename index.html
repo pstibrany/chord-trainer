@@ -37,10 +37,99 @@
                             <input type="checkbox" id="chord-halfDim7" value="halfDim7" checked>
                             <span>min7♭5</span>
                         </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chord-dim7" value="dim7" checked>
+                            <span>dim7</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chord-minMaj7" value="minMaj7" checked>
+                            <span>min(maj7)</span>
+                        </label>
                     </div>
                 </div>
                 
-                <p>20 questions per round</p>
+                <div class="root-selection">
+                    <h3>Select Root Notes:</h3>
+                    <div class="root-controls">
+                        <button type="button" id="select-all-roots" class="btn-small">Select All</button>
+                        <button type="button" id="select-none-roots" class="btn-small">Select None</button>
+                    </div>
+                    <div class="checkbox-group roots-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="C" checked>
+                            <span>C</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="C♯" checked>
+                            <span>C♯</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="D♭" checked>
+                            <span>D♭</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="D" checked>
+                            <span>D</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="D♯" checked>
+                            <span>D♯</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="E♭" checked>
+                            <span>E♭</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="E" checked>
+                            <span>E</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="F" checked>
+                            <span>F</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="F♯" checked>
+                            <span>F♯</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="G♭" checked>
+                            <span>G♭</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="G" checked>
+                            <span>G</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="G♯" checked>
+                            <span>G♯</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="A♭" checked>
+                            <span>A♭</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="A" checked>
+                            <span>A</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="A♯" checked>
+                            <span>A♯</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="B♭" checked>
+                            <span>B♭</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="root-checkbox" value="B" checked>
+                            <span>B</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question-count">
+                    <label for="num-questions">Number of Questions:</label>
+                    <input type="number" id="num-questions" min="1" max="100" value="20">
+                </div>
                 <button id="start-btn" class="btn btn-primary">Start Practice</button>
             </div>
         </div>

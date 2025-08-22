@@ -7,6 +7,7 @@ class ChordTrainer {
         this.mistakes = [];
         this.answeredQuestions = [];
         this.selectedChordTypes = [];
+        this.selectedRoots = [];
         
         this.initializeElements();
         this.attachEventListeners();
@@ -30,6 +31,10 @@ class ChordTrainer {
         this.progressFill = document.querySelector('.progress-fill');
         this.progressText = document.querySelector('.progress-text');
         
+        this.numQuestionsInput = document.getElementById('num-questions');
+        this.selectAllRootsBtn = document.getElementById('select-all-roots');
+        this.selectNoneRootsBtn = document.getElementById('select-none-roots');
+        
         this.finalScore = document.getElementById('final-score');
         this.scoreMessage = document.getElementById('score-message');
         this.mistakesReview = document.getElementById('mistakes-review');
@@ -41,20 +46,40 @@ class ChordTrainer {
         this.correctBtn.addEventListener('click', () => this.markAnswer(true));
         this.incorrectBtn.addEventListener('click', () => this.markAnswer(false));
         this.restartBtn.addEventListener('click', () => this.restartQuiz());
+        
+        this.selectAllRootsBtn.addEventListener('click', () => this.selectAllRoots());
+        this.selectNoneRootsBtn.addEventListener('click', () => this.selectNoneRoots());
     }
     
     startQuiz() {
         // Get selected chord types
         this.selectedChordTypes = [];
-        const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked');
+        const chordCheckboxes = document.querySelectorAll('.chord-selection input[type="checkbox"]:checked');
         
-        checkboxes.forEach(checkbox => {
+        chordCheckboxes.forEach(checkbox => {
             this.selectedChordTypes.push(checkbox.value);
         });
+        
+        // Get selected root notes
+        this.selectedRoots = [];
+        const rootCheckboxes = document.querySelectorAll('.root-checkbox:checked');
+        
+        rootCheckboxes.forEach(checkbox => {
+            this.selectedRoots.push(checkbox.value);
+        });
+        
+        // Get number of questions
+        this.totalQuestions = parseInt(this.numQuestionsInput.value) || 20;
         
         // Validate at least one chord type is selected
         if (this.selectedChordTypes.length === 0) {
             alert('Please select at least one chord type!');
+            return;
+        }
+        
+        // Validate at least one root is selected
+        if (this.selectedRoots.length === 0) {
+            alert('Please select at least one root note!');
             return;
         }
         
@@ -75,7 +100,7 @@ class ChordTrainer {
             return;
         }
         
-        this.currentChord = getRandomChord(this.selectedChordTypes);
+        this.currentChord = getRandomChord(this.selectedChordTypes, this.selectedRoots);
         this.answeredQuestions.push({
             chord: this.currentChord,
             isCorrect: false
@@ -200,6 +225,18 @@ class ChordTrainer {
                 this.resultsScreen.classList.add('active');
                 break;
         }
+    }
+    
+    selectAllRoots() {
+        document.querySelectorAll('.root-checkbox').forEach(checkbox => {
+            checkbox.checked = true;
+        });
+    }
+    
+    selectNoneRoots() {
+        document.querySelectorAll('.root-checkbox').forEach(checkbox => {
+            checkbox.checked = false;
+        });
     }
 }
 
