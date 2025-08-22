@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord Trainer - Practice Your Music Theory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chord Trainer</h1>
+            <p class="subtitle">Master maj7, min7, 7, and min7♭5 Chords</p>
+        </header>
+
+        <div id="start-screen" class="screen active">
+            <div class="card">
+                <h2>Welcome to Chord Trainer!</h2>
+                <p>Practice identifying the notes in different chord types.</p>
+                
+                <div class="chord-selection">
+                    <h3>Select Chord Types:</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chord-maj7" value="maj7" checked>
+                            <span>maj7</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chord-min7" value="min7" checked>
+                            <span>min7</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chord-dom7" value="dom7" checked>
+                            <span>7 (dominant)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chord-halfDim7" value="halfDim7" checked>
+                            <span>min7♭5</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <p>20 questions per round</p>
+                <button id="start-btn" class="btn btn-primary">Start Practice</button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+                <span class="progress-text">Question 1 / 20</span>
+            </div>
+
+            <div class="card">
+                <div class="question-section">
+                    <h2 id="chord-name" class="chord-display"></h2>
+                    <p class="instruction">What notes are in this chord?</p>
+                </div>
+
+                <div id="answer-section" class="answer-section hidden">
+                    <h3>Answer:</h3>
+                    <div id="chord-notes" class="chord-notes-display"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="reveal-btn" class="btn btn-primary">Reveal Answer</button>
+                    <button id="correct-btn" class="btn btn-success hidden">I Got It Right ✓</button>
+                    <button id="incorrect-btn" class="btn btn-danger hidden">I Got It Wrong ✗</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <div class="card">
+                <h2>Practice Complete!</h2>
+                <div class="results">
+                    <div class="score-display">
+                        <h3 id="final-score"></h3>
+                        <p id="score-message"></p>
+                    </div>
+                    <div id="mistakes-review" class="mistakes-section"></div>
+                </div>
+                <button id="restart-btn" class="btn btn-primary">Practice Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chords.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
