@@ -57,6 +57,12 @@ header h1 {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
+#quiz-screen .card {
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
 .progress-bar {
     background: rgba(255, 255, 255, 0.3);
     height: 30px;
@@ -86,11 +92,7 @@ header h1 {
 
 .question-section {
     text-align: center;
-    margin-bottom: 30px;
-    min-height: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex: 0 0 auto;
 }
 
 .chord-display {
@@ -112,10 +114,11 @@ header h1 {
     margin: 30px 0;
     text-align: center;
     transition: opacity 0.3s ease;
-    min-height: 120px;
+    height: 140px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex: 0 0 auto;
 }
 
 .answer-section.hidden {
@@ -161,7 +164,8 @@ header h1 {
 .action-buttons {
     display: flex;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-top: auto;
+    flex: 0 0 auto;
 }
 
 .btn {
